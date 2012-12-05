@@ -1,23 +1,10 @@
 <?php
-$message      = "the test message";
-$tickerText   = "ticker text message";
-$contentTitle = "content title";
-$contentText  = "content body";
- 
-$regID = isset($_REQUEST['regid']) ? $_REQUEST['regid'] :
-          isset($_GET['regid']) ? $_GET['regid'] :
-          isset($_POST['regid']) ? $_POST['regid'] : "";
-if (!$regID){
-  //die ("not a valid regid provided!");
-}
-
-$registrationIds = array($regID);
-$apiKey = "AIzaSyA7tWbN7LMNmOOthCFI2TA99X8WTEGEGIA";
 
 $response = sendNotification( 
-                $apiKey, 
-                $registrationIds, 
-                array('message' => $message, 'tickerText' => $tickerText, 'contentTitle' => $contentTitle, "contentText" => $contentText) );
+    "AIzaSyBYnDXaLxYWU-MbHhxQn3TysXWAgyEBuOs", 
+    getRegIds(), 
+    array('message' => "the test message" )
+);
  
 echo $response;
 
@@ -42,6 +29,20 @@ function sendNotification( $apiKey, $registrationIdsArray, $messageData )
     curl_close($ch);
  
     return $response;
+}
+
+function getRegIds(){
+    $regID = isset($_REQUEST['regid']) ? $_REQUEST['regid'] :
+        isset($_GET['regid']) ? $_GET['regid'] :
+        isset($_POST['regid']) ? $_POST['regid'] : "";
+
+    //return array($regID);
+    
+    return array(
+// HTC
+"APA91bF3M8EUsyEp3iFcnOK1zwepzFAmzILzwEIv9yiyRLy-NVNMRkHudFT7tg8-PA-abiYFnvN56AX6OGFEY73Kv_r-H4BFifVS9BHMfBGqeZPuuqkSMq3GtCFKX4sdN8NCF0LiKWXiQJWjg8kDK_8xrGmgH93PjQ"
+        );
+         
 }
  
 ?>

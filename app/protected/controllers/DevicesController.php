@@ -58,6 +58,7 @@ class DevicesController extends Controller
 
   public function actionRegister()
   {
+
     $this->layout = '';
     
     $device = isset($_POST['device']) ? $_POST['device'] : '';
@@ -66,7 +67,7 @@ class DevicesController extends Controller
     if (!$device || !$regkey)
     {
       echo 'ERROR: missing information';
-      return false;  
+      Yii::app()->end();
     }
 
     $device = Device::model()->findByPk($device);
@@ -82,12 +83,12 @@ class DevicesController extends Controller
     if($model->save())
     {
       echo 'OK';
-      return true;
+      Yii::app()->end();
     }
     
     echo 'ERROR: unknown';
-    return false;
-    
+    Yii:app()->send();
+   
   }
   
 	/**

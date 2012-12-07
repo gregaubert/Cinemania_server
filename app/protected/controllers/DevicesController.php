@@ -77,7 +77,7 @@ class DevicesController extends Controller
       $model->id = $device;
     }
     
-    $model->regid = $regid;
+    $model->regkey = $regkey;
     
     if($model->save())
     {

@@ -42,9 +42,9 @@ return array(
       'password' => 'kdl5Opc',
       'charset' => 'utf8',
     ),
-    'errorHandler'=>array(
+    /*'errorHandler'=>array(
       'errorAction'=>'devices/error',
-    ),
+    ),*/
     'log'=>array(
       'class'=>'CLogRouter',
       'routes'=>array(

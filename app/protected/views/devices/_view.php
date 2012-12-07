@@ -9,8 +9,8 @@
 	<?php echo CHtml::link(CHtml::encode($data->id), array('view', 'id'=>$data->id)); ?>
 	<br />
 
-	<b><?php echo CHtml::encode($data->getAttributeLabel('regid')); ?>:</b>
-	<?php echo CHtml::encode($data->regid); ?>
+	<b><?php echo CHtml::encode($data->getAttributeLabel('regkey')); ?>:</b>
+	<?php echo CHtml::encode($data->regkey); ?>
 	<br />
 
 

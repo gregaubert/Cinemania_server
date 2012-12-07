@@ -17,8 +17,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'regid'); ?>
-		<?php echo $form->textField($model,'regid',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->label($model,'regkey'); ?>
+		<?php echo $form->textField($model,'regkey',array('size'=>60,'maxlength'=>255)); ?>
 	</div>
 
 	<div class="row buttons">

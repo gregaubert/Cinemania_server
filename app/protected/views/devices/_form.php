@@ -22,9 +22,9 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->labelEx($model,'regid'); ?>
-		<?php echo $form->textField($model,'regid',array('size'=>60,'maxlength'=>255)); ?>
-		<?php echo $form->error($model,'regid'); ?>
+		<?php echo $form->labelEx($model,'regkey'); ?>
+		<?php echo $form->textField($model,'regkey',array('size'=>60,'maxlength'=>255)); ?>
+		<?php echo $form->error($model,'regkey'); ?>
 	</div>
 
 	<div class="row buttons">

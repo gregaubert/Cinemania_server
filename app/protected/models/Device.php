@@ -5,7 +5,7 @@
  *
  * The followings are the available columns in table 'device':
  * @property string $id
- * @property string $regid
+ * @property string $regkey
  *
  * The followings are the available model relations:
  * @property Game[] $games
@@ -40,10 +40,10 @@ class Device extends CActiveRecord
 		return array(
 			array('id', 'required'),
 			array('id', 'length', 'max'=>16),
-			array('regid', 'length', 'max'=>255),
+			array('regkey', 'length', 'max'=>255),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, regid', 'safe', 'on'=>'search'),
+			array('id, regkey', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -66,7 +66,7 @@ class Device extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'regid' => 'Regid',
+			'regkey' => 'Regkey',
 		);
 	}
 
@@ -82,7 +82,7 @@ class Device extends CActiveRecord
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id,true);
-		$criteria->compare('regid',$this->regid,true);
+		$criteria->compare('regkey',$this->regkey,true);
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,

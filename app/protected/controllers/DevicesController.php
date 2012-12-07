@@ -55,22 +55,22 @@ class DevicesController extends Controller
 
     $this->layout = '';
     
-    $device = isset($_POST['device']) ? $_POST['device'] : '';
+    $devid = isset($_POST['device']) ? $_POST['device'] : '';
     $regkey = isset($_POST['regkey']) ? $_POST['regkey'] : '';
     
-    if (!$device || !$regkey)
+    if (!$devid || !$regkey)
     {
       echo 'ERROR: missing information';
       Yii::app()->end();
     }
 
-    $device = Device::model()->findByPk($device);
+    $model = Device::model()->findByPk($devid);
     
-    if ($device === null)
+    if (!$model)
     {
       $model = new Device;  
-      $model->id = $device;
-    }
+      $model->id = $devid;
+     }
     
     $model->regkey = $regkey;
     
@@ -81,7 +81,7 @@ class DevicesController extends Controller
     }
     
     echo 'ERROR: unknown';
-    Yii:app()->send();
+    Yii::app()->end();
    
   }
   

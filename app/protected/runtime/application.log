@@ -674,3 +674,621 @@ Stack trace:
 #19 {main}
 REQUEST_URI=/cinemania/app/index.php
 ---
+2012/12/07 12:42:45 [error] [exception.CException] exception 'CException' with message 'CAssetManager.basePath "/home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/assets" is invalid. Please make sure the directory exists and is writable by the Web server process.' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CAssetManager.php:128
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CAssetManager.php(113): CAssetManager->setBasePath('/home/jorge/Dro...')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CAssetManager.php(235): CAssetManager->getBasePath()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/zii/widgets/CListView.php(188): CAssetManager->publish('/home/jorge/Dro...')
+#3 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CBaseController.php(148): CListView->init()
+#4 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CBaseController.php(173): CBaseController->createWidget('zii.widgets.CLi...', Array)
+#5 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/protected/views/devices/index.php(20): CBaseController->widget('zii.widgets.CLi...', Array)
+#6 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CBaseController.php(127): require('/home/jorge/Dro...')
+#7 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CBaseController.php(96): CBaseController->renderInternal('/home/jorge/Dro...', Array, true)
+#8 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(870): CBaseController->renderFile('/home/jorge/Dro...', Array, true)
+#9 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(783): CController->renderPartial('index', Array, true)
+#10 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/protected/controllers/DevicesController.php(162): CController->render('index', Array)
+#11 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/actions/CInlineAction.php(50): DevicesController->actionIndex()
+#12 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(309): CInlineAction->runWithParams(Array)
+#13 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#14 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#15 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#16 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#17 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#18 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(292): CFilterChain->run()
+#19 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#20 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(283): CController->run('')
+#21 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('devices')
+#22 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#23 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#24 {main}
+REQUEST_URI=/cinemania/app/index.php/devices
+---
+2012/12/07 12:44:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php:337
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#3 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(292): CFilterChain->run()
+#7 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(283): CController->run('register')
+#9 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('devices/registe...')
+#10 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#12 {main}
+REQUEST_URI=/cinemania/app/index.php/devices/register
+---
+2012/12/07 12:47:58 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php:337
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#3 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(292): CFilterChain->run()
+#7 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(283): CController->run('register')
+#9 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('devices/registe...')
+#10 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#12 {main}
+REQUEST_URI=/cinemania/app/index.php/devices/register
+---
+2012/12/07 12:49:00 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php:337
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#3 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(292): CFilterChain->run()
+#7 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(283): CController->run('register')
+#9 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('devices/registe...')
+#10 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#12 {main}
+REQUEST_URI=/cinemania/app/index.php/devices/register
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php:337
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#3 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(292): CFilterChain->run()
+#7 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(283): CController->run('register')
+#9 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('devices/registe...')
+#10 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#12 {main}
+REQUEST_URI=/cinemania/app/index.php/devices/register
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:57 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:53:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:54:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "site/login".' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php:287
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('site/login')
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#3 {main}
+REQUEST_URI=/cinemania/app/index.php/site/login
+---
+2012/12/07 12:54:17 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php:337
+Stack trace:
+#0 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(310): CController->invalidActionParams(Object(CInlineAction))
+#1 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(134): CController->runAction(Object(CInlineAction))
+#2 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilter.php(41): CFilterChain->run()
+#3 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(1146): CFilter->filter(Object(CFilterChain))
+#4 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CInlineFilter.php(59): CController->filterAccessControl(Object(CFilterChain))
+#5 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/filters/CFilterChain.php(131): CInlineFilter->filter(Object(CFilterChain))
+#6 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(292): CFilterChain->run()
+#7 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CController.php(266): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(283): CController->run('register')
+#9 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/web/CWebApplication.php(142): CWebApplication->runController('devices/registe...')
+#10 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/framework/base/CApplication.php(162): CWebApplication->processRequest()
+#11 /home/jorge/Dropbox/MSE HES-SO/Games Technologies/Cinemania_server/app/index.php(7): CApplication->run()
+#12 {main}
+REQUEST_URI=/cinemania/app/index.php/devices/register
+---

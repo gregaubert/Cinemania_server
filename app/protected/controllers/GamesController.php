@@ -23,7 +23,7 @@ class GamesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','join','list','new','passturn'),
+				'actions'=>array('index','view','join','list','new','passturn','data'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -130,6 +130,23 @@ class GamesController extends Controller
     }
     
     echo CJSON::encode($games);
+  }
+  
+  public function actionData()
+  {
+    // avoid the system printing any HTML at all  
+    $this->layout = '';
+    
+    $game = $this->validatePostGame();
+    $device = $this->validatePostDevice();
+    
+    if (!count(Device2game::model()->findAllByAttributes(array('games_id'=>$game->id,'devices_id'=>$device->id))))
+    {
+      echo $this->jsonError("not authorised");
+      Yii::app()->end();
+    }
+    
+    echo CJSON::encode($game->attributes);
   }
   
   public function actionPassturn()

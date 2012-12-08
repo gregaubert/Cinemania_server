@@ -95,12 +95,17 @@ class GamesController extends Controller
     // avoid the system printing any HTML at all
     $this->layout = '';
     
-    $device = $this->checkPostDevice();
+    $device = $this->validatePostDevice();
     $data = $this->checkPostData();
     
     $game = new Game;
     $game->data = $data;
     $game->save();
+    
+    $relationship = new Device2game;
+    $relationship->gameid = $game->id;
+    $relationship->deviceid = $device->id;
+    $relationship->save();
     
     echo CJSON::encode(array(
       'success'=>1,

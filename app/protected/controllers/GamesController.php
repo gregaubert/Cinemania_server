@@ -177,7 +177,7 @@ class GamesController extends Controller
     $game->data = $data;
     // TODO: calculate current player according to really available players
     // for now on, assuming that games are full
-    $game->currentPlayer = $game->currentPlayer == 4 ? 0 : $game->currentPlayer+1;
+    $game->currentPlayer = $this->getNextPlayer($game);
     $game->turn ++;
 
     if (!$game->save())
@@ -193,10 +193,30 @@ class GamesController extends Controller
       $sendTo[] = $device->regkey;
     }
     
-    $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));    
+    //$result = GCM::message($sendTo,array('action' => "PASS_TURN" ));    
 
     echo CJSON::encode(array('success'=>1,'currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
     
+  }
+
+  private function getNextPlayer($game)
+  {
+    $playerid = $game->currentPlayer;
+      
+    do 
+    {
+      $playerid ++;
+      if ($playerid > 4)
+      {
+        $playerid = 1;
+      }
+
+      $memberships = Device2game::model()->findAllByAttributes(array('games_id'=>$game->id,'playerid'=>$playerid));
+
+    }
+    while (!count($memberships));      
+    
+    return $memberships[0]->playerid;
   }
   
   private function checkPostDevice()

@@ -41,6 +41,8 @@ return array(
       'username' => 'cinemania',
       'password' => 'kdl5Opc',
       'charset' => 'utf8',
+      //'enableProfiling'=>true,
+      //'enableParamLogging' => true,
     ),
     /*'errorHandler'=>array(
       'errorAction'=>'devices/error',
@@ -50,11 +52,12 @@ return array(
       'routes'=>array(
         array(
           'class'=>'CFileLogRoute',
-          'levels'=>'error, warning',
+          'levels'=>'error, warning,profile',
         ),
         // uncomment the following to show log messages on web pages
         array(
           'class'=>'CWebLogRoute',
+          'levels'=>'profile'
         ),
       ),
     ),

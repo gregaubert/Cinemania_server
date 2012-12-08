@@ -23,7 +23,7 @@ class GamesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','join','list','new'),
+				'actions'=>array('index','view','join','list','new','passturn'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -45,25 +45,9 @@ class GamesController extends Controller
     // avoid the system printing any HTML at all
     $this->layout = '';
     
-    $deviceID = $this->checkPostDevice();
-    $gameID = $this->checkPostGame();
+    $device = $this->validatePostDevice();
+    $game = $this->validatePostGame();
     
-    // validate the device and the game
-    $device = Device::model()->findByPk($deviceID);    
-    if (!count($device))
-    {
-      echo $this->jsonError('wrong device');
-      Yii::app()->end();
-    }
-    
-    // game
-    $game = Game::model()->findByPk($gameID);   
-    if (!count($game))
-    {
-      echo $this->jsonError('wrong game');
-      Yii::app()->end();
-    }
-
     // check that there are enough spaces
     if (count($game->devices) == 4)
     {
@@ -76,7 +60,7 @@ class GamesController extends Controller
   
     foreach ($memberships as $_membership)
     {
-      if ($_membership->devices_id == $deviceID)
+      if ($_membership->devices_id == $device->id)
       {
         echo $this->jsonError("already registered");
         Yii::app()->end();
@@ -104,7 +88,7 @@ class GamesController extends Controller
       
     $membership->save();
       
-    echo CJSON::encode(array('success'=>1,'message'=>"OK",'playerid'=>$membership->playerid));
+    echo CJSON::encode(array('success'=>1,'playerid'=>$membership->playerid));
     Yii::app()->end();
     
   }
@@ -148,6 +132,47 @@ class GamesController extends Controller
     echo CJSON::encode($games);
   }
   
+  public function actionPassturn()
+  {
+    // avoid the system printing any HTML at all
+    $this->layout = '';
+    
+    $device = $this->validatePostDevice();
+    $game = $this->validatePostGame();
+    $data = $this->checkPostData(); 
+    
+    // check that the device is registered to the game
+    $memberships = Device2game::model()->findAllByAttributes(array('games_id'=>$game->id,'devices_id'=>$device->id));  
+  
+    if (!count($memberships))
+    {
+      echo $this->jsonError("not authorised");
+      Yii::app()->end();
+    }
+
+    if ($game->currentPlayer != $memberships[0]->playerid)
+    {
+      echo $this->jsonError("it is not your turn");
+      Yii::app()->end();
+    }
+    
+    // now, update game data
+    $game->data = $data;
+    // TODO: calculate current player according to really available players
+    // for now on, assuming that games are full
+    $game->currentPlayer = $game->currentPlayer == 4 ? 0 : $game->currentPlayer+1;
+    $game->turn ++;
+
+    if (!$game->save())
+    {
+      echo $this->jsonError("unknown");
+      Yii::app()->end();
+    }
+
+    echo CJSON::encode(array('success'=>1,'currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
+    
+  }
+  
   private function checkPostDevice()
   {
     return $this->checkPostField('device');
@@ -161,6 +186,36 @@ class GamesController extends Controller
   private function checkPostGame()
   {
     return $this->checkPostField('game');
+  }
+  
+  private function validatePostDevice()
+  {
+    $deviceID = $this->checkPostDevice();
+       
+    // validate the device and the game
+    $device = Device::model()->findByPk($deviceID);    
+    if (!count($device))
+    {
+      echo $this->jsonError('wrong device');
+      Yii::app()->end();
+    }
+    
+    return $device;
+  }
+  
+  private function validatePostGame()
+  {
+    $gameID = $this->checkPostGame();
+    
+    // game
+    $game = Game::model()->findByPk($gameID);   
+    if (!count($game))
+    {
+      echo $this->jsonError('wrong game');
+      Yii::app()->end();
+    }
+    
+    return $game;
   }
 
 	/**

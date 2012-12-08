@@ -56,11 +56,11 @@ class GamesController extends Controller
     }
    
     // since we already have the object, there is no need for a query 
-    $memberships = Device2game::model()->findAllByAttributes(array('games_id'=>$game->id));  
+    $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id));  
   
     foreach ($memberships as $_membership)
     {
-      if ($_membership->devices_id == $device->id)
+      if ($_membership->deviceid == $device->id)
       {
         echo $this->jsonError("already registered");
         Yii::app()->end();
@@ -69,8 +69,8 @@ class GamesController extends Controller
  
     // now we are ok to register the device with the game
     $membership = new Device2game;
-    $membership->games_id = $game->id;
-    $membership->devices_id = $device->id;
+    $membership->gameid = $game->id;
+    $membership->deviceid = $device->id;
 
     // get the player number by reducing options according to current players
     $availablePlayers = array(1,2,3,4);
@@ -140,7 +140,7 @@ class GamesController extends Controller
     $game = $this->validatePostGame();
     $device = $this->validatePostDevice();
     
-    if (!count(Device2game::model()->findAllByAttributes(array('games_id'=>$game->id,'devices_id'=>$device->id))))
+    if (!count(Device2game::model()->findAllByAttributes(array('gameid'=>$game->id,'deviceid'=>$device->id))))
     {
       echo $this->jsonError("not authorised");
       Yii::app()->end();
@@ -159,7 +159,7 @@ class GamesController extends Controller
     $data = $this->checkPostData(); 
     
     // check that the device is registered to the game
-    $memberships = Device2game::model()->findAllByAttributes(array('games_id'=>$game->id,'devices_id'=>$device->id));  
+    $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id,'deviceid'=>$device->id));  
   
     if (!count($memberships))
     {
@@ -211,7 +211,7 @@ class GamesController extends Controller
         $playerid = 1;
       }
 
-      $memberships = Device2game::model()->findAllByAttributes(array('games_id'=>$game->id,'playerid'=>$playerid));
+      $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id,'playerid'=>$playerid));
 
     }
     while (!count($memberships));      

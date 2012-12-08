@@ -4,8 +4,8 @@
  * This is the model class for table "device2game".
  *
  * The followings are the available columns in table 'device2game':
- * @property string $devices_id
- * @property string $games_id
+ * @property string $deviceid
+ * @property string $gameid
  * @property string $playerid
  */
 class Device2game extends CActiveRecord
@@ -30,12 +30,12 @@ class Device2game extends CActiveRecord
   
   public function getGameForeignKey()
   {
-    return 'games_id';
+    return 'gameid';
   }
   
   public function getDeviceForeignKey()
   {
-    return 'devices_id';
+    return 'deviceid';
   }
 
 	/**
@@ -46,13 +46,13 @@ class Device2game extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('devices_id, games_id', 'required'),
-			array('devices_id', 'length', 'max'=>16),
-			array('games_id', 'length', 'max'=>10),
+			array('deviceid, gameid', 'required'),
+			array('deviceid', 'length', 'max'=>16),
+			array('gameid', 'length', 'max'=>10),
 			array('playerid', 'length', 'max'=>45),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('devices_id, games_id, playerid', 'safe', 'on'=>'search'),
+			array('deviceid, gameid, playerid', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -73,8 +73,8 @@ class Device2game extends CActiveRecord
 	public function attributeLabels()
 	{
 		return array(
-			'devices_id' => 'Devices',
-			'games_id' => 'Games',
+			'deviceid' => 'Devices',
+			'gameid' => 'Games',
 			'playerid' => 'Playerid',
 		);
 	}
@@ -90,8 +90,8 @@ class Device2game extends CActiveRecord
 
 		$criteria=new CDbCriteria;
 
-		$criteria->compare('devices_id',$this->devices_id,true);
-		$criteria->compare('games_id',$this->games_id,true);
+		$criteria->compare('deviceid',$this->deviceid,true);
+		$criteria->compare('gameid',$this->gameid,true);
 		$criteria->compare('playerid',$this->playerid,true);
 
 		return new CActiveDataProvider($this, array(

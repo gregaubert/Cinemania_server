@@ -61,7 +61,7 @@ class Game extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
-			'devices' => array(self::MANY_MANY, 'Device', 'device2game(games_id, devices_id)'),
+			'devices' => array(self::MANY_MANY, 'Device', 'device2game(gameid, deviceid)'),
 		);
 	}
 

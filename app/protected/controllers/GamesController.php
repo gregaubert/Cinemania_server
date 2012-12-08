@@ -23,7 +23,7 @@ class GamesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','join','list'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -39,6 +39,50 @@ class GamesController extends Controller
 			),
 		);
 	}
+
+  public function actionJoin()
+  {
+    // are there any games yet?
+    
+    // do they have enough room?
+    
+    // if so, join the device ID to the game ID
+    
+    // and return the game ID and data
+    
+    // if no games yet
+    
+    // get the data from the request 
+    
+    // validate it
+    
+    // create a new game
+    
+    // return its id to the user
+    
+    // by default print an error
+    
+    echo "ERROR: unknown";
+  }
+  
+  public function actionList(){
+    // avoid the system printing any HTML at all  
+    $this->layout = '';
+    
+    // get a list of games and print it in JSON format
+    $result = Game::model()->findAll();
+    
+    $games = array();
+    foreach($result as $game){
+      $games[] = array(
+        'id'=>$game->id,
+        'turn'=>$game->turn,
+        'currentPlayer'=>$game->currentPlayer
+      );
+    }
+    
+    echo CJSON::encode($games);
+  }
 
 	/**
 	 * Displays a particular model.

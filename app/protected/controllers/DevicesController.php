@@ -22,7 +22,7 @@ class DevicesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','register'),
+				'actions'=>array('index','view','register','unregister'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -55,7 +55,7 @@ class DevicesController extends Controller
 
     $this->layout = '';
 
-    $devid = $this->checkPostField('device');
+    $devid = $this->checkPostDevice();
     $regkey = $this->checkPostField('key');
 
     $model = Device::model()->findByPk($devid);
@@ -77,18 +77,31 @@ class DevicesController extends Controller
     {
       if ($existed)
       {
-        echo CJSON::encode(array('success'=>1,'message'=>'Updated'));
+        $this->jsonSuccess('updated');
       }
       else 
       {
-        echo CJSON::encode(array('success'=>1,'message'=>'OK'));    
+        $this->jsonSuccess('registered');  
       }      
-      Yii::app()->end();
     }
     
-    echo $this->jsonError('unknown');
-    Yii::app()->end();
+    $this->jsonError('unknown');
    
+  }
+  
+  public function actionUnregister()
+  {
+    $this->layout = '';
+
+    $device = $this->validatePostDevice();
+    
+    if($device->delete())
+    {      
+      $this->jsonSuccess('unregistered');
+    }
+    
+    $this->jsonError('unknown');
+
   }
   
 	/**

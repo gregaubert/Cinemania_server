@@ -25,7 +25,23 @@ class Controller extends CController
   
   protected function jsonError($message='')
   {
-    return CJSON::encode(array('success'=>0,'error'=>$message));
+    echo CJSON::encode(array('success'=>0,'error'=>$message));
+    Yii::app()->end();
+  }
+  
+  protected function jsonSuccess($message='')
+  {
+    if (is_array($message))
+    {
+      $data = array_merge($message,array('success'=>1));
+    }
+    else 
+    {
+      $data = array('success'=>1,'message'=>$message);
+    }
+    
+    echo CJSON::encode($data);
+    Yii::app()->end();
   }
   
   protected function checkPostField($fieldName)
@@ -34,10 +50,52 @@ class Controller extends CController
     
     if (!$field)
     {
-      echo $this->jsonError("missing " . $fieldName);        
-      Yii::app()->end();
+      $this->jsonError("missing " . $fieldName);        
     }
     
     return $field;
+  }
+  
+  protected function checkPostDevice()
+  {
+    return $this->checkPostField('device');
+  }
+  
+  protected function checkPostData()
+  {
+    return $this->checkPostField('data');
+  }
+  
+  protected function checkPostGame()
+  {
+    return $this->checkPostField('game');
+  }
+  
+  protected function validatePostDevice()
+  {
+    $deviceID = $this->checkPostDevice();
+       
+    // validate the device and the game
+    $device = Device::model()->findByPk($deviceID);    
+    if (!count($device))
+    {
+      $this->jsonError('wrong device');
+    }
+    
+    return $device;
+  }
+  
+  protected function validatePostGame()
+  {
+    $gameID = $this->checkPostGame();
+    
+    // game
+    $game = Game::model()->findByPk($gameID);   
+    if (!count($game))
+    {
+      $this->jsonError('wrong game');
+    }
+    
+    return $game;
   }
 }

@@ -51,8 +51,7 @@ class GamesController extends Controller
     // check that there are enough spaces
     if (count($game->devices) == 4)
     {
-      echo $this->jsonError('game is already full');
-      Yii::app()->end();
+      $this->jsonError('game is already full');
     }
    
     // since we already have the object, there is no need for a query 
@@ -62,8 +61,7 @@ class GamesController extends Controller
     {
       if ($_membership->deviceid == $device->id)
       {
-        echo $this->jsonError("already registered");
-        Yii::app()->end();
+        $this->jsonError("already registered");
       }
     }
  
@@ -88,8 +86,7 @@ class GamesController extends Controller
       
     $membership->save();
       
-    echo CJSON::encode(array('success'=>1,'playerid'=>$membership->playerid));
-    Yii::app()->end();
+    $this->jsonSuccess(array('playerid'=>$membership->playerid));
     
   }
   
@@ -142,8 +139,7 @@ class GamesController extends Controller
     
     if (!count(Device2game::model()->findAllByAttributes(array('gameid'=>$game->id,'deviceid'=>$device->id))))
     {
-      echo $this->jsonError("not authorised");
-      Yii::app()->end();
+      $this->jsonError("not authorised");
     }
     
     echo CJSON::encode($game->attributes);
@@ -163,14 +159,12 @@ class GamesController extends Controller
   
     if (!count($memberships))
     {
-      echo $this->jsonError("not authorised");
-      Yii::app()->end();
+      $this->jsonError("not authorised");
     }
 
     if ($game->currentPlayer != $memberships[0]->playerid)
     {
-      echo $this->jsonError("it is not your turn");
-      Yii::app()->end();
+      $this->jsonError("it is not your turn");
     }
     
     // now, update game data
@@ -182,8 +176,7 @@ class GamesController extends Controller
 
     if (!$game->save())
     {
-      echo $this->jsonError("unknown");
-      Yii::app()->end();
+      $this->jsonError("unknown");
     }
     
     // send GCM notifications
@@ -195,7 +188,7 @@ class GamesController extends Controller
     
     $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));    
 
-    echo CJSON::encode(array('success'=>1,'currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
+    $this->jsonSuccess(array('currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
     
   }
 
@@ -217,51 +210,6 @@ class GamesController extends Controller
     while (!count($memberships));      
     
     return $memberships[0]->playerid;
-  }
-  
-  private function checkPostDevice()
-  {
-    return $this->checkPostField('device');
-  }
-  
-  private function checkPostData()
-  {
-    return $this->checkPostField('data');
-  }
-  
-  private function checkPostGame()
-  {
-    return $this->checkPostField('game');
-  }
-  
-  private function validatePostDevice()
-  {
-    $deviceID = $this->checkPostDevice();
-       
-    // validate the device and the game
-    $device = Device::model()->findByPk($deviceID);    
-    if (!count($device))
-    {
-      echo $this->jsonError('wrong device');
-      Yii::app()->end();
-    }
-    
-    return $device;
-  }
-  
-  private function validatePostGame()
-  {
-    $gameID = $this->checkPostGame();
-    
-    // game
-    $game = Game::model()->findByPk($gameID);   
-    if (!count($game))
-    {
-      echo $this->jsonError('wrong game');
-      Yii::app()->end();
-    }
-    
-    return $game;
   }
 
 	/**

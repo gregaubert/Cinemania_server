@@ -45,63 +45,68 @@ class GamesController extends Controller
     // avoid the system printing any HTML at all
     $this->layout = '';
     
-    // are there any games with available slots yet?
-    $games = Game::model()->findAllWithNumDevices();
+    $deviceID = $this->checkPostDevice();
+    $gameID = $this->checkPostGame();
     
-    // if so, join the device ID to the game ID
-    if (count($games)){
-      $device = isset($_POST['device'])?$_POST['device']:'';
-      
-      if (!$device)
-      {
-        echo $this->jsonError("wrong device");        
-        Yii::app()->end();
-      }
-      
-      // wrong device
-      if (!count(Device::model()->findByPk($device)))
-      {
-        echo $this->jsonError("already registered");
-        Yii::app()->end();
-      }
-      
-      if (count(Device2game::model()->findByPk($device)))
-      {
-        echo $this->jsonError("already registered");
-        Yii::app()->end();
-      }
-      
-      $membership = new Device2game;
-      $membership->games_id = $games[0]['id'];
-      $membership->devices_id = $device;
-      
-      $membership->save();
-      
-      echo CJSON::encode(array('success'=>1,'message'=>"OK"));
+    // validate the device and the game
+    $device = Device::model()->findByPk($deviceID);    
+    if (!count($device))
+    {
+      echo $this->jsonError('wrong device');
       Yii::app()->end();
     }
     
-    Debug::message($games);
+    // game
+    $game = Game::model()->findByPk($gameID);   
+    if (!count($game))
+    {
+      echo $this->jsonError('wrong game');
+      Yii::app()->end();
+    }
+
+    // check that there are enough spaces
+    if (count($game->devices) == 4)
+    {
+      echo $this->jsonError('game is already full');
+      Yii::app()->end();
+    }
+   
+    // since we already have the object, there is no need for a query 
+    $memberships = Device2game::model()->findAllByAttributes(array('games_id'=>$game->id));  
+  
+    foreach ($memberships as $_membership)
+    {
+      if ($_membership->devices_id == $deviceID)
+      {
+        echo $this->jsonError("already registered");
+        Yii::app()->end();
+      }
+    }
+ 
+    // now we are ok to register the device with the game
+    $membership = new Device2game;
+    $membership->games_id = $game->id;
+    $membership->devices_id = $device->id;
+
+    // get the player number by reducing options according to current players
+    $availablePlayers = array(1,2,3,4);
     
-    // do they have enough room?
+    foreach($memberships as $_membership)
+    {
+      $pos = array_search($_membership->playerid,$availablePlayers);
+      
+      if ($pos !== false)
+      {
+        unset($availablePlayers[$pos]);  
+      }
+    }
+    $membership->playerid = array_shift($availablePlayers);
+      
+    $membership->save();
+      
+    echo CJSON::encode(array('success'=>1,'message'=>"OK",'playerid'=>$membership->playerid));
+    Yii::app()->end();
     
-    // if so, join the device ID to the game ID
-    
-    // and return the game ID and data
-    
-    // if no games yet
-    
-    // get the data from the request 
-    
-    // validate it
-    
-    // create a new game
-    
-    // return its id to the user
-    
-    // by default print an error
-    
-    echo $this->jsonError("unknown");
   }
   
   public function actionNew()
@@ -109,20 +114,8 @@ class GamesController extends Controller
     // avoid the system printing any HTML at all
     $this->layout = '';
     
-    $device = isset($_POST['device']) ? $_POST['device'] : '';
-    $data = isset($_POST['data']) ? $_POST['data'] : '';
-    
-    if (!$device)
-    {
-      echo $this->jsonError("missing device");        
-      Yii::app()->end();
-    }
-    
-    if (!$data)
-    {
-      echo $this->jsonError("missing data");        
-      Yii::app()->end();
-    }
+    $device = $this->checkPostDevice();
+    $data = $this->checkPostData();
     
     $game = new Game;
     $game->data = $data;
@@ -153,6 +146,21 @@ class GamesController extends Controller
     }
     
     echo CJSON::encode($games);
+  }
+  
+  private function checkPostDevice()
+  {
+    return $this->checkPostField('device');
+  }
+  
+  private function checkPostData()
+  {
+    return $this->checkPostField('data');
+  }
+  
+  private function checkPostGame()
+  {
+    return $this->checkPostField('game');
   }
 
 	/**

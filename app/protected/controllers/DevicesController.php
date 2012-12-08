@@ -54,19 +54,18 @@ class DevicesController extends Controller
   {
 
     $this->layout = '';
-    
-    $devid = isset($_POST['device']) ? $_POST['device'] : '';
-    $regkey = isset($_POST['regkey']) ? $_POST['regkey'] : '';
-    
-    if (!$devid || !$regkey)
-    {
-      echo $this->jsonError('missing information');
-      Yii::app()->end();
-    }
+
+    $devid = $this->checkPostField('device');
+    $regkey = $this->checkPostField('key');
 
     $model = Device::model()->findByPk($devid);
     
-    if (!$model)
+    $existed = false;
+    if ($model)
+    {
+      $existed = true;
+    }
+    else
     {
       $model = new Device;  
       $model->id = $devid;
@@ -76,7 +75,14 @@ class DevicesController extends Controller
     
     if($model->save())
     {
-      echo CJSON::encode(array('success'=>1,'message'=>'OK'));
+      if ($existed)
+      {
+        echo CJSON::encode(array('success'=>1,'message'=>'Updated'));
+      }
+      else 
+      {
+        echo CJSON::encode(array('success'=>1,'message'=>'OK'));    
+      }      
       Yii::app()->end();
     }
     

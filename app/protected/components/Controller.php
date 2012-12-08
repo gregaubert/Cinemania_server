@@ -23,8 +23,21 @@ class Controller extends CController
    */
   public $breadcrumbs = array();  
   
-  public function jsonError($message='')
+  protected function jsonError($message='')
   {
     return CJSON::encode(array('success'=>0,'error'=>$message));
+  }
+  
+  protected function checkPostField($fieldName)
+  {
+    $field = isset($_POST[$fieldName]) ? $_POST[$fieldName] : '';
+    
+    if (!$field)
+    {
+      echo $this->jsonError("missing " . $fieldName);        
+      Yii::app()->end();
+    }
+    
+    return $field;
   }
 }

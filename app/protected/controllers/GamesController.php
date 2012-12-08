@@ -193,7 +193,7 @@ class GamesController extends Controller
       $sendTo[] = $device->regkey;
     }
     
-    //$result = GCM::message($sendTo,array('action' => "PASS_TURN" ));    
+    $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));    
 
     echo CJSON::encode(array('success'=>1,'currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
     

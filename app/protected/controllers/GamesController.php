@@ -168,6 +168,15 @@ class GamesController extends Controller
       echo $this->jsonError("unknown");
       Yii::app()->end();
     }
+    
+    // send GCM notifications
+    $sendTo = array();
+    foreach($game->devices as $device)
+    {
+      $sendTo[] = $device->regkey;
+    }
+    
+    $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));    
 
     echo CJSON::encode(array('success'=>1,'currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
     

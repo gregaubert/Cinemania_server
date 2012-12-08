@@ -186,12 +186,18 @@ class GamesController extends Controller
     
     // send GCM notifications
     $sendTo = array();
-    foreach($game->devices as $device)
+    foreach($game->devices as $_device)
     {
-      $sendTo[] = $device->regkey;
+      // do not send to itself!
+      if ($device->id != $_device->id){
+        $sendTo[] = $device->regkey; 
+      }      
     }
-    
-    $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));    
+ 
+    if (count($sendTo))
+    {
+      $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));  
+    }        
 
     $this->jsonSuccess(array('currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
     

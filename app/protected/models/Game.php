@@ -15,6 +15,9 @@
  */
 class Game extends CActiveRecord
 {
+  
+  private static $primaryKey = 'id';
+  
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @param string $className active record class name.
@@ -33,11 +36,6 @@ class Game extends CActiveRecord
 		return 'game';
 	}
   
-  public function getPrimaryKey()
-  {
-    return 'id';
-  }
-
 	/**
 	 * @return array validation rules for model attributes.
 	 */
@@ -106,7 +104,7 @@ class Game extends CActiveRecord
   public function findAllWithNumDevices(){
     $dev2game = Device2game::model()->tableName();
     $game = self::tableName();
-    $gamepk = self::getPrimaryKey(); 
+    $gamepk = self::$primaryKey; 
     $dev2gamepk = Device2game::getGameForeignKey();
     $dev2gamepk2 = Device2game::getDeviceForeignKey();
     

@@ -42,7 +42,19 @@ class GamesController extends Controller
 
   public function actionJoin()
   {
+    // avoid the system printing any HTML at all
+    $this->layout = '';
+    
     // are there any games yet?
+    $games = Game::model()->findAllWithNumDevices();
+    
+    //$games = $command->queryRow();
+    
+    if ($games){
+      
+    }
+    
+    Debug::message($games);
     
     // do they have enough room?
     

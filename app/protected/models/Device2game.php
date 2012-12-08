@@ -27,6 +27,16 @@ class Device2game extends CActiveRecord
 	{
 		return 'device2game';
 	}
+  
+  public function getGameForeignKey()
+  {
+    return 'games_id';
+  }
+  
+  public function getDeviceForeignKey()
+  {
+    return 'devices_id';
+  }
 
 	/**
 	 * @return array validation rules for model attributes.

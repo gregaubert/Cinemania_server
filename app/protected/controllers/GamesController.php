@@ -23,7 +23,7 @@ class GamesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','join','list'),
+				'actions'=>array('index','view','join','list','new'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -45,13 +45,40 @@ class GamesController extends Controller
     // avoid the system printing any HTML at all
     $this->layout = '';
     
-    // are there any games yet?
+    // are there any games with available slots yet?
     $games = Game::model()->findAllWithNumDevices();
     
-    //$games = $command->queryRow();
-    
-    if ($games){
+    // if so, join the device ID to the game ID
+    if (count($games)){
+      $device = isset($_POST['device'])?$_POST['device']:'';
       
+      if (!$device)
+      {
+        echo $this->jsonError("wrong device");        
+        Yii::app()->end();
+      }
+      
+      // wrong device
+      if (!count(Device::model()->findByPk($device)))
+      {
+        echo $this->jsonError("already registered");
+        Yii::app()->end();
+      }
+      
+      if (count(Device2game::model()->findByPk($device)))
+      {
+        echo $this->jsonError("already registered");
+        Yii::app()->end();
+      }
+      
+      $membership = new Device2game;
+      $membership->games_id = $games[0]['id'];
+      $membership->devices_id = $device;
+      
+      $membership->save();
+      
+      echo CJSON::encode(array('success'=>1,'message'=>"OK"));
+      Yii::app()->end();
     }
     
     Debug::message($games);
@@ -74,10 +101,42 @@ class GamesController extends Controller
     
     // by default print an error
     
-    echo "ERROR: unknown";
+    echo $this->jsonError("unknown");
   }
   
-  public function actionList(){
+  public function actionNew()
+  {
+    // avoid the system printing any HTML at all
+    $this->layout = '';
+    
+    $device = isset($_POST['device']) ? $_POST['device'] : '';
+    $data = isset($_POST['data']) ? $_POST['data'] : '';
+    
+    if (!$device)
+    {
+      echo $this->jsonError("missing device");        
+      Yii::app()->end();
+    }
+    
+    if (!$data)
+    {
+      echo $this->jsonError("missing data");        
+      Yii::app()->end();
+    }
+    
+    $game = new Game;
+    $game->data = $data;
+    $game->save();
+    
+    echo CJSON::encode(array(
+      'success'=>1,
+      'game'=>$game->id
+    ));
+    
+  }
+  
+  public function actionList()
+  {
     // avoid the system printing any HTML at all  
     $this->layout = '';
     

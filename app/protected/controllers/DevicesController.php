@@ -60,7 +60,7 @@ class DevicesController extends Controller
     
     if (!$devid || !$regkey)
     {
-      echo 'ERROR: missing information';
+      echo $this->jsonError('missing information');
       Yii::app()->end();
     }
 
@@ -76,11 +76,11 @@ class DevicesController extends Controller
     
     if($model->save())
     {
-      echo 'OK';
+      echo CJSON::encode(array('success'=>1,'message'=>'OK'));
       Yii::app()->end();
     }
     
-    echo 'ERROR: unknown';
+    echo $this->jsonError('unknown');
     Yii::app()->end();
    
   }

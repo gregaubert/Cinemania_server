@@ -23,7 +23,7 @@ class GamesController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view','join','list','new','passturn','data'),
+				'actions'=>array('index','view','join','list','new','passturn','data','available'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -128,6 +128,25 @@ class GamesController extends Controller
         'id'=>$game->id,
         'turn'=>$game->turn,
         'currentPlayer'=>$game->currentPlayer
+      );
+    }
+    
+    echo CJSON::encode($games);
+  }
+
+  public function actionAvailable()
+  {
+    // avoid the system printing any HTML at all  
+    $this->layout = '';
+    
+    // get a list of games and print it in JSON format
+    $result = Game::model()->findAllWithNumDevices();
+    
+    $games = array();
+    foreach($result as $game){
+      $games[] = array(
+        'id'=>$game['id'],
+        'devices'=>$game['numDevices']
       );
     }
     

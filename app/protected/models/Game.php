@@ -100,5 +100,26 @@ class Game extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+  /**
+   * Returns only the games that have available slots
+   * with the information of how many devices are already registered
+   */
+  public function findAllWithNumDevices(){
+    $dev2game = Device2game::model()->tableName();
+    $game = self::tableName();
+    $gamepk = self::$primaryKey; 
+    $dev2gamepk = Device2game::getGameForeignKey();
+    $dev2gamepk2 = Device2game::getDeviceForeignKey();
+    
+    $command = Yii::app()->db->createCommand(
+      sprintf(
+        'SELECT g.*, (SELECT COUNT(d.%5$s) FROM %1$s d WHERE %4$s = g.%3$s) numDevices FROM %2$s g LEFT JOIN %1$s d ON d.%4$s = g.%3$s GROUP BY %3$s;',
+        $dev2game,$game,$gamepk,$dev2gamepk,$dev2gamepk2
+      )
+    );
+    
+    return $command->queryAll();
+  }
   
 }

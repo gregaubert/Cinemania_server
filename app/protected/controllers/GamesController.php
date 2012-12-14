@@ -107,11 +107,7 @@ class GamesController extends Controller
     $relationship->deviceid = $device->id;
     $relationship->save();
     
-    echo CJSON::encode(array(
-      'success'=>1,
-      'game'=>$game->id
-    ));
-    
+    $this->jsonSuccess(array('game'=>$game->id));    
   }
   
   public function actionList()
@@ -131,7 +127,7 @@ class GamesController extends Controller
       );
     }
     
-    echo CJSON::encode($games);
+    $this->jsonSuccess(array('games'=>$games));
   }
 
   public function actionAvailable()
@@ -150,7 +146,7 @@ class GamesController extends Controller
       );
     }
     
-    echo CJSON::encode($games);
+    $this->jsonSuccess(array('games'=>$games));
   }
   
   public function actionData()
@@ -166,7 +162,7 @@ class GamesController extends Controller
       $this->jsonError("not authorised");
     }
     
-    echo CJSON::encode($game->attributes);
+    $this->jsonSuccess(array('game'=>$games->attributes));
   }
   
   public function actionPassturn()

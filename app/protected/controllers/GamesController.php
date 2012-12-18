@@ -111,7 +111,7 @@ class GamesController extends Controller
       $this->jsonError("not authorised");
     }
     
-    $this->jsonSuccess(array('game'=>$games->attributes));
+    $this->jsonSuccess(array('game'=>$game->attributes));
   }
   
   public function actionPassturn()

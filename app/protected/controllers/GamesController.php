@@ -112,7 +112,7 @@ class GamesController extends Controller
     foreach($result as $game){
       $games[] = array(
         'id'=>$game['id'],
-        'devices'=>$game['numDevices']
+        'players'=>$game['numDevices']
       );
     }
     
@@ -172,6 +172,7 @@ class GamesController extends Controller
  
     if (count($sendTo))
     {
+      echo 'calling GCM' . $sendTo;
       $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));  
     }        
 

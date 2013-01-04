@@ -172,7 +172,7 @@ class GamesController extends Controller
     $sendTo = array();
     foreach($game->devices as $_device)
     {
-      $sendTo[] = $device->regkey;       
+      $sendTo[] = $_device->regkey;       
     }
  
     if (count($sendTo))

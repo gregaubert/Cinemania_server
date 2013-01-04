@@ -156,12 +156,17 @@ class GamesController extends Controller
       $this->jsonError("it is not your turn");
     }
     
-    // now, update game data
-    $game->data = $data;
+    // HACK
+    $jsonObject = CJSON::decode($data);
+    foreach($memberships as $_mem){
+      $json["players"][$_mem->playerid]["id"] = $_mem->deviceid;        
+    }
+    $game->data = CJSON::encode($json);   
+    
     // TODO: calculate current player according to really available players
     // for now on, assuming that games are full
     $game->currentPlayer = $this->getNextPlayer($game);
-    $game->turn ++;
+    $game->turn ++;    
 
     if (!$game->save())
     {

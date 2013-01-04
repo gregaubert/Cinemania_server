@@ -114,10 +114,10 @@ class Game extends CActiveRecord
     
     $command = Yii::app()->db->createCommand(
       sprintf(
-        'SELECT g.*, (SELECT COUNT(d.%5$s) FROM %1$s d WHERE %4$s = g.%3$s) numDevices FROM %2$s g LEFT JOIN %1$s d ON d.%4$s = g.%3$s GROUP BY %3$s;',
+        'SELECT * FROM (SELECT g.*, (SELECT COUNT(d.%5$s) FROM %1$s d WHERE %4$s = g.%3$s) numDevices FROM %2$s g LEFT JOIN %1$s d ON d.%4$s = g.%3$s ) test WHERE numDevices < 4 GROUP BY %3$s ORDER BY numDevices DESC',
         $dev2game,$game,$gamepk,$dev2gamepk,$dev2gamepk2
       )
-    );
+    );   
     
     return $command->queryAll();
   }

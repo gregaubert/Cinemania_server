@@ -49,7 +49,12 @@ class GamesController extends Controller
     // update game data since we know player identifier
     $json = CJSON::decode($game->data);
     $json["players"][$membership->playerid]["id"] = $device->id;
-    $json["game"]["player"] = $device->id;
+    
+    // only the first player of the game
+    if (count($game->devices) == 0){
+      $json["game"]["player"] = $device->id;  
+    }    
+    
     $game->data = CJSON::encode($json);
     $game->save();
 

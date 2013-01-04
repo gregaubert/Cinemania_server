@@ -4,7 +4,7 @@ class GamesController extends Controller
 {
 
   public function actionJoin()
-  {    
+  {
     $device = $this->validatePostDevice();
     $game = $this->validatePostGame();
     
@@ -31,7 +31,7 @@ class GamesController extends Controller
     $membership->deviceid = $device->id;
 
     // get the player number by reducing options according to current players
-    $availablePlayers = array(1,2,3,4);
+    $availablePlayers = array(0, 1, 2, 3);
     
     foreach($memberships as $_membership)
     {
@@ -45,24 +45,42 @@ class GamesController extends Controller
     $membership->playerid = array_shift($availablePlayers);
       
     $membership->save();
-      
-    $this->jsonSuccess(array('playerid'=>$membership->playerid));
+
+    // update game data since we know player identifier
+    $json = CJSON::decode($game->data);
+    $json["players"][$membership->playerid]["id"] = $device->id;
+    $json["game"]["player"] = $device->id;
+    $game->data = CJSON::encode($json);
+    $game->save();
+
+    // notify by GCM the game could be start
+    $sendTo = array();
+    foreach($game->devices as $_device)
+    {
+      $sendTo[] = $device->regkey;       
+    }
+    if (count($sendTo))
+    {
+      $result = GCM::message($sendTo, array('action' => "START_GAME"));  
+    }     
     
+    $this->jsonSuccess(array('playerid'=>$membership->playerid));   
   }
   
   public function actionNew()
-  {    
+  {
     $device = $this->validatePostDevice();
     $data = $this->checkPostData();
-    
+
+    // generate a new identifier
     $game = new Game;
-    $game->data = $data;
     $game->save();
     
-    $relationship = new Device2game;
-    $relationship->gameid = $game->id;
-    $relationship->deviceid = $device->id;
-    $relationship->save();
+    // actually the client generate data therefore we need to fix game and players identifiers
+    $json = CJSON::decode($data);
+    $json["game"]["id"] = $game->id;
+    $game->data = CJSON::encode($json);
+    $game->save();
     
     $this->jsonSuccess(array('game'=>$game->id));    
   }
@@ -184,12 +202,12 @@ class GamesController extends Controller
     return $memberships[0]->playerid;
   }
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
+  /**
+   * Lists all models.
+   */
+  public function actionIndex()
+  {
 		$this->actionAvailable();
-	}
+  }
 
-}
+  }

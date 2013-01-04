@@ -140,7 +140,7 @@ class GamesController extends Controller
     
     // check that the device is registered to the game
     $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id,'deviceid'=>$device->id));  
-  
+    
     if (!count($memberships))
     {
       $this->jsonError("not authorised");
@@ -189,9 +189,9 @@ class GamesController extends Controller
     do 
     {
       $playerid ++;
-      if ($playerid > 4)
+      if ($playerid > 3)
       {
-        $playerid = 1;
+        $playerid = 0;
       }
 
       $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id,'playerid'=>$playerid));

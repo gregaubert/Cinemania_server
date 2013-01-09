@@ -111,7 +111,7 @@ class GamesController extends Controller
   public function actionAvailable()
   {  
     // get a list of games and print it in JSON format
-    $result = Game::model()->findAllWithNumDevices();
+    $result = Game::model()->findAvailable();
     
     $games = array();
     foreach($result as $game){

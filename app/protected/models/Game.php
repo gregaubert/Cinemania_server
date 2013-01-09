@@ -105,7 +105,7 @@ class Game extends CActiveRecord
    * Returns only the games that have available slots
    * with the information of how many devices are already registered
    */
-  public function findAllWithNumDevices(){
+  public function findAvailable(){
     $dev2game = Device2game::model()->tableName();
     $game = self::tableName();
     $gamepk = self::$primaryKey; 
@@ -114,7 +114,7 @@ class Game extends CActiveRecord
     
     $command = Yii::app()->db->createCommand(
       sprintf(
-        'SELECT * FROM (SELECT g.*, (SELECT COUNT(d.%5$s) FROM %1$s d WHERE %4$s = g.%3$s) numDevices FROM %2$s g LEFT JOIN %1$s d ON d.%4$s = g.%3$s ) test WHERE numDevices < 4 GROUP BY %3$s ORDER BY numDevices DESC',
+        'SELECT * FROM (SELECT g.*, (SELECT COUNT(d.%5$s) FROM %1$s d WHERE %4$s = g.%3$s) numDevices FROM %2$s g LEFT JOIN %1$s d ON d.%4$s = g.%3$s ) test WHERE numDevices < 4  AND turn = 1 GROUP BY %3$s ORDER BY numDevices DESC',
         $dev2game,$game,$gamepk,$dev2gamepk,$dev2gamepk2
       )
     );   

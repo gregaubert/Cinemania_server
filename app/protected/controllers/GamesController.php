@@ -14,7 +14,7 @@ class GamesController extends Controller
       $this->jsonError('game is already full');
     }
    
-    // since we already have the object, there is no need for a query 
+    // check against memberships
     $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id));  
   
     foreach ($memberships as $_membership)
@@ -48,6 +48,7 @@ class GamesController extends Controller
 
     // update game data since we know player identifier
     $json = CJSON::decode($game->data);
+    
     $json["players"][$membership->playerid]["id"] = $device->id;
     
     // only the first player of the game
@@ -62,14 +63,16 @@ class GamesController extends Controller
     $sendTo = array();
     foreach($game->devices as $_device)
     {
-      $sendTo[] = $device->regkey;       
+      $sendTo[] = $_device->regkey;       
     }
-    if (count($sendTo))
-    {
-      $result = GCM::message($sendTo, array('action' => "START_GAME"));  
-    }     
     
-    $this->jsonSuccess(array('playerid'=>$membership->playerid));   
+    if (GCM::message($sendTo, array('action' => "PLAYER_JOINED")))
+    {
+      $this->jsonSuccess(array('playerid'=>$membership->playerid));  
+    }  
+         
+    $this->jsonError("Could not notify the other players");    
+       
   }
   
   public function actionNew()
@@ -157,7 +160,7 @@ class GamesController extends Controller
     }
     
     // HACK
-    $jsonObject = CJSON::decode($data);
+    $json = CJSON::decode($data);
     foreach($memberships as $_mem){
       $json["players"][$_mem->playerid]["id"] = $_mem->deviceid;        
     }

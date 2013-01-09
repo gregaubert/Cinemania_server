@@ -159,17 +159,23 @@ class GamesController extends Controller
       $this->jsonError("it is not your turn");
     }
     
-    // HACK
-    $json = CJSON::decode($data);
-    foreach($memberships as $_mem){
-      $json["players"][$_mem->playerid]["id"] = $_mem->deviceid;        
-    }
-    $game->data = CJSON::encode($json);   
-    
     // TODO: calculate current player according to really available players
     // for now on, assuming that games are full
     $game->currentPlayer = $this->getNextPlayer($game);
     $game->turn ++;    
+
+    // HACK
+    $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id));
+    $json = CJSON::decode($data);
+    foreach($memberships as $_mem){
+      $json["players"][$_mem->playerid]["id"] = $_mem->deviceid;
+
+      if ($game->currentPlayer == $_mem->playerid)
+      {
+        $json["game"]["player"] =$_mem->deviceid;
+      }        
+    }
+    $game->data = CJSON::encode($json);   
 
     if (!$game->save())
     {
@@ -185,11 +191,10 @@ class GamesController extends Controller
  
     if (count($sendTo))
     {
-      echo 'calling GCM' . $sendTo;
-      $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));  
+       $result = GCM::message($sendTo,array('action' => "PASS_TURN" ));  
     }        
 
-    $this->jsonSuccess(array('currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn));
+    $this->jsonSuccess(array('currentPlayer'=>$game->currentPlayer,'turn'=>$game->turn, 'currentDeviceId'=>$json["game"]["player"]));
     
   }
 

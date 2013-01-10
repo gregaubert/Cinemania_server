@@ -198,6 +198,41 @@ class GamesController extends Controller
     
   }
 
+  public function actionLeave()
+  {
+    $device = $this->validatePostDevice();
+    $game = $this->validatePostGame(); 
+    
+    // check that the device is registered to the game
+    $memberships = Device2game::model()->findAllByAttributes(array('gameid'=>$game->id,'deviceid'=>$device->id));  
+    
+    if (count($memberships)!=1)
+    {
+      $this->jsonError("not authorised");
+    }
+    
+    if ($memberships[0]->delete())
+    {
+      $sendTo = array();
+      foreach($game->devices as $_device)
+      {
+        $sendTo[] = $_device->regkey;       
+      }
+   
+      $result = 0;
+      if (count($sendTo))
+      {
+         $result = GCM::message($sendTo,array('action' => "PLAYER_LEFT" ));  
+      }        
+    
+      $this->jsonSuccess(array("device"=>$device->id,"game"=>$game->id,"notified"=>$result?1:0));
+    }
+    else 
+    {
+      $this->jsonError("could not remove membership");  
+    }
+  }
+
   private function getNextPlayer($game)
   {
     $playerid = $game->currentPlayer;
